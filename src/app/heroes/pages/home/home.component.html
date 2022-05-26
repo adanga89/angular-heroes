@@ -1,20 +1,59 @@
-<h1>Home Heroes</h1>
-<ul>
-    <li>
-        <a routerLink="/heroes/listado">Ir a Listado</a>
-    </li>
-    <li>
-        <a routerLink="/heroes/agregar">Ir a agregar</a>
-    </li>
-    <li>
-        <a routerLink="/heroes/editar/1">Ir a editar</a>
-    </li>
-    <li>
-        <a routerLink="/heroes/bucar">Ir a buscar</a>
-    </li>
-    <li>
-        <a routerLink="/heroes/1">Ir a heroe</a>
-    </li>
-</ul>
+<mat-sidenav-container fullscreen>
+    <mat-sidenav #sidenav mode="push">
+        <mat-toolbar color="primary">
+            <span>Menú</span>
+            <span class="spacer"></span>
+            <button 
+                mat-icon-button
+                (click)="sidenav.toggle()">
+                <mat-icon>
+                    menu
+                </mat-icon>
+            </button>
+        </mat-toolbar>
+        
 
-<router-outlet></router-outlet>
+        <mat-list>
+            <a 
+                mat-list-item
+                (click)="sidenav.toggle()"
+                routerLink="./listado">
+                <mat-icon>label</mat-icon>
+                <span> Listado de Heroes</span>
+            </a>
+            <a 
+                mat-list-item
+                (click)="sidenav.toggle()"
+                routerLink="./listado">
+                <mat-icon>add</mat-icon>
+                <span> Añadir Heroe</span>
+            </a>
+            <a 
+                mat-list-item
+                (click)="sidenav.toggle()"
+                routerLink="./listado">
+                <mat-icon>search</mat-icon>
+                <span> Buscar Heroe</span>
+            </a>
+        </mat-list>
+
+    </mat-sidenav>
+
+    <mat-toolbar color="primary">
+        <button 
+            mat-icon-button
+            (click)="sidenav.toggle()">
+            <mat-icon>
+                menu
+            </mat-icon>
+        </button>
+        <span class="spacer"></span>
+        <button mat-button position="end">
+            Logout
+        </button>
+    </mat-toolbar>
+
+    <div class="container">
+        <router-outlet></router-outlet>
+    </div>
+</mat-sidenav-container>   
