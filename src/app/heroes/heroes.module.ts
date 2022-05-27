@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
-import { HoroesRoutingModule } from './heroes-routing.module';
+import { HeroesRoutingModule } from './heroes-routing.module';
 import { MaterialModule } from '../material/material.module';
 
 import { AgregarComponent } from './pages/agregar/agregar.component';
@@ -29,7 +29,7 @@ import { ImagenPipe } from './pipes/imagen.pipe';
     CommonModule,
     FlexLayoutModule,
     MaterialModule,
-    HoroesRoutingModule,
+    HeroesRoutingModule,
   ]
 })
 export class HeroesModule { }
