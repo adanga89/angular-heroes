@@ -1,11 +1,11 @@
 
-<mat-grid-list cols="1" *ngIf="!heroe" >
+<mat-grid-list cols="1" *ngIf="!heroe; else divHeroe" >
     <mat-grid-tile>
         <mat-spinner></mat-spinner>
     </mat-grid-tile>
 </mat-grid-list>
 
-<div>
+<ng-template #divHeroe>
     <div 
         fxLayout="row"
         fxLayout.xs="column"
@@ -35,4 +35,4 @@
             </button>
         </div>
     </div>
-</div>
+</ng-template>
