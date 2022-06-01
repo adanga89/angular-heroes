@@ -6,7 +6,7 @@ import { HeroesService } from '../../services/heroes.service';
   selector: 'app-listado',
   templateUrl: './listado.component.html',
   styles: [`
-  app-heroe-tarjeta{
+  .mrg{
     margin-top: 20px;
   }
   `
