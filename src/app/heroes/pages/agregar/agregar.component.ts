@@ -17,6 +17,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class AgregarComponent implements OnInit {
 
+  title: string = "Agregar";
   publishers = [
     {
       id: 'DC Comics',
@@ -44,12 +45,15 @@ export class AgregarComponent implements OnInit {
 
   ngOnInit(): void {
     if(this.router.url.includes("editar")){
+      this.title = "Editar";
       this.activatedRoute.params
       .pipe(
         switchMap(({id})=> this.heroeService.getHeroeById(id))
       )
       .subscribe( heroe => this.heroe = heroe);
     }
+    else
+      this.title = "Nuevo";
   }
 
   guardar(){
@@ -66,4 +70,10 @@ export class AgregarComponent implements OnInit {
     }
   }
 
+  eliminar(){
+    this.heroeService.borrarSuperHeroe(this.heroe.id)
+        .subscribe(res => {
+          this.router.navigate([`/heroes`])
+        });
+  }
 }

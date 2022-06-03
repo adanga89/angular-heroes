@@ -1,4 +1,4 @@
-<h1>Nuevo Heroe <small>asdasd</small></h1>
+<h1>{{title}} Heroe <small *ngIf="heroe.id">"{{heroe.superhero}}"</small></h1>
 
 <div fxLayout="row" 
     fxLayout.xs="column" 
@@ -63,11 +63,22 @@
 
         <br>
 
-        <button mat-raised-button color="warn"
-        (click)="guardar()">
-            <mat-icon>edit</mat-icon>
-            Guardar
-        </button>
+        <div fxLayout>
+            <button mat-raised-button color="primary"
+            (click)="guardar()">
+                <mat-icon>edit</mat-icon>
+                Guardar
+            </button>
+            
+            <span class="spacer"></span>
+
+            <button *ngIf="heroe.id"
+            mat-raised-button color="warn"
+            (click)="eliminar()">
+            <mat-icon>remove</mat-icon>
+            Borrar
+            </button>
+        </div>
     </div>
 
     <div fxFlex="50">
