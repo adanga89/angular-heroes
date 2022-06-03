@@ -6,15 +6,19 @@ import { AuthService } from '../services/auth.service';
 @Injectable({
   providedIn: 'root'
 })
-export class AuthGuard implements /*CanActivate ,*/ CanLoad {
+export class AuthGuard implements CanActivate , CanLoad {
 
   constructor(private authService: AuthService){}
-  // canActivate(
-  //   route: ActivatedRouteSnapshot,
-  //   state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-  //   return true;
-  // }
-  canLoad( //Solo restringe el load del modulo, si ya se cargo anteriormente, si accede
+  
+  canActivate(
+    route: ActivatedRouteSnapshot,
+    state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
+      if(this.authService.auth.id) return true;
+
+      return false;
+  }
+
+  canLoad( //Solo restringe el load del modulo, si ya se cargo anteriormente, si accede 
     route: Route,
     segments: UrlSegment[]): Observable<boolean> | Promise<boolean> | boolean {
     
