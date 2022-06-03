@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Subscriber } from 'rxjs';
 import { Hero, Publisher } from '../../interfaces/heroes.interface';
+import { HeroesService } from '../../services/heroes.service';
 
 @Component({
   selector: 'app-agregar',
@@ -30,9 +32,16 @@ export class AgregarComponent implements OnInit {
     id: ""
   };
 
-  constructor() { }
+  constructor(private heroeService: HeroesService) { }
 
   ngOnInit(): void {
+  }
+
+  guardar(){
+    if(this.heroe.superhero.trim().length === 0) return;
+
+    this.heroeService.agregarSuperHeroe(this.heroe)
+      .subscribe(console.log);
   }
 
 }
